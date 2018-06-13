@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>NextWells App</title>
+    
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+</head>
+
+<body>
+    <h1>NextWells App Version 1.9</h1>
+    <p>New Daily Operational Report</p>
+
+    <!-- Calendar form section -->
+    <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
+        <tr>
+            <td id="ds_calclass"></td>
+        </tr>
+    </table>
+    <div class="form-center">
+        <form id="calendar" name="myForm" action="" method="post">
+            <div>
+                  <hr/>
+                  <b>Insert any date here</b><input id="date_from_calendar" onclick="ds_sh(this);" name="date" readonly="readonly" style="cursor: text" /><br /><br />
+            </div>
+        </form>
+    </div>
+
+    <!-- Data entry -->
+    <div class="data-input">
+        <!-- </br></br></br></br></br></br></br></br></br></br></br></br> -->
+        Additional Operational Comment </br>
+        <textarea rows="4" cols="50" id="additional_ope" form="usrform"></textarea>
+        </br></br>
+        Process Safety R...</br>
+        <textarea rows="4" cols="50" id="process_saf" form="usrform"></textarea>
+        </br></br>
+        REMARKS for Next Operation</br>
+        <textarea rows="4" cols="50" id="remarks_for" form="usrform"></textarea>
+        </br></br>
+        HSE SUMMARY</br>
+        <textarea rows="4" cols="50" id="hse_summary" form="usrform"></textarea>
+        </br></br>
+        H 00:00</br>
+        <textarea rows="4" cols="50" id="h_00" form="usrform"></textarea>
+        </br></br>
+        H 01:00</br>
+        <textarea rows="4" cols="50" id="h_01" form="usrform"></textarea>
+        </br></br>
+        H 02:00</br>
+        <textarea rows="4" cols="50" id="h_02" form="usrform"></textarea>
+        </br></br>
+        H 03:00</br>
+        <textarea rows="4" cols="50" id="h_03" form="usrform"></textarea>
+        </br></br>
+        H 04:00</br>
+        <textarea rows="4" cols="50" id="h_04" form="usrform"></textarea>
+        </br></br>
+        H 05:00</br>
+        <textarea rows="4" cols="50" id="h_05" form="usrform"></textarea>
+        </br></br>
+        H 06:00</br>
+        <textarea rows="4" cols="50" id="h_06" form="usrform"></textarea>
+        </br></br>
+        H 07:00</br>
+        <textarea rows="4" cols="50" id="h_07" form="usrform"></textarea>
+        </br></br>
+        H 08:00</br>
+        <textarea rows="4" cols="50" id="h_08" form="usrform"></textarea>
+        </br></br>
+        H 09:00</br>
+        <textarea rows="4" cols="50" id="h_09" form="usrform"></textarea>
+        </br></br>
+        H 10:00</br>
+        <textarea rows="4" cols="50" id="h_10" form="usrform"></textarea>
+        </br></br>
+        H 11:00</br>
+        <textarea rows="4" cols="50" id="h_11" form="usrform"></textarea>
+        </br></br>
+        H 12:00</br>
+        <textarea rows="4" cols="50" id="h_12" form="usrform"></textarea>
+        </br></br>
+        H 13:00</br>
+        <textarea rows="4" cols="50" id="h_13" form="usrform"></textarea>
+        </br></br>
+        H 14:00</br>
+        <textarea rows="4" cols="50" id="h_14" form="usrform"></textarea>
+        </br></br>
+        H 15:00</br>
+        <textarea rows="4" cols="50" id="h_15" form="usrform"></textarea>
+        </br></br>
+        H 16:00</br>
+        <textarea rows="4" cols="50" id="h_16" form="usrform"></textarea>
+        </br></br>
+        H 17:00</br>
+        <textarea rows="4" cols="50" id="h_17" form="usrform"></textarea>
+        </br></br>
+        H 18:00</br>
+        <textarea rows="4" cols="50" id="h_18" form="usrform"></textarea>
+        </br></br>
+        H 19:00</br>
+        <textarea rows="4" cols="50" id="h_19" form="usrform"></textarea>
+        </br></br>
+        H 20:00</br>
+        <textarea rows="4" cols="50" id="h_20" form="usrform"></textarea>
+        </br></br>
+        H 21:00</br>
+        <textarea rows="4" cols="50" id="h_21" form="usrform"></textarea>
+        </br></br>
+        H 22:00</br>
+        <textarea rows="4" cols="50" id="h_22" form="usrform"></textarea>
+        </br></br>
+        H 23:00</br>
+        <textarea rows="4" cols="50" id="h_23" form="usrform"></textarea>
+        </br></br>
+    </div>
+
+    <!-- insert-inicio -->
+    <div class="insert-search-inicio">
+        <!-- Insert(0)shows insertdb-home and hides insert-search-inicio -->
+        <button id="" onclick="Insert(0)">Insert</button>
+        <button id="" onclick="Search(0)">Search</button>
+    </div>
+
+    <!-- insertdb-home -->
+    <div class="insertdb-home">
+        <button id="" onclick="Insert(1)">Insert</button>
+        <button id="" onclick="Home()">Home</button>
+    </div>
+
+    <!-- searchdb-home -->
+    <div class="searchdb-home">
+        <button id="" onclick="Search(1)">Search</button>
+        <button id="" onclick="Home()">Home</button>
+    </div>
+
+    <!-- update-home-button section -->
+    <div class="update-home-buttons">
+        <button id="" onclick="updateEntryDB()">Update</button>
+        <button id="" onclick="Home()">Home</button>
+    </div>
+
+    <!-- panel-modify-delete-update-home section -->
+    <div class="panel-modify-delete-update-home">
+        <button id="" onclick="modify()">Modify</button>
+        <button id="" onclick="Delete()">Delete</button>
+        <button id="" onclick="Search(2)">Update</button>
+        <button id="" onclick="Home()">Home</button>
+    </div>
+
+    <script type="text/javascript">
+
+        function onDeviceReady() {
+            var db = window.openDatabase("phone_gap", "0.10", "Cordova Demo", 200000);
+            db.transaction(populateDB, errorCB);
+        }
+
+        //reads data base when starts index.html
+        onDeviceReady();
+
+        ///////////////////global variables/////////////////////
+        var currentRow;
+        var value = -1;
+        var response = '';
+        var ID = '';
+        // array for handling string to hide or show
+        var html_classes = [];
+        // gets textarea ids and values
+        var inputs = document.querySelector('.data-input').getElementsByTagName('textarea');
+        // string builder for db queries
+        var buildString = '';
+        var string_queries = [
+        //0 create table
+        'CREATE TABLE IF NOT EXISTS DEMO (id INTEGER PRIMARY KEY AUTOINCREMENT,',
+        //1 search query to consult if data exists in db
+        "SELECT * FROM DEMO where date = ('",
+        ];
+
+        ///////////////////populateDB/////////////////////////////
+        function populateDB(tx) {
+            buildString = '';
+            // 0 CREATE TABLE IF NOT EXISTS DEMO (id INTEGER PRIMARY KEY AUTOINCREMENT,
+            buildString = string_queries[0];
+            buildString += getAllIDFromInputs();
+            // execute query
+            tx.executeSql(buildString);
+        }
+
+        ///////////////////errorCB/////////////////////////////
+        function errorCB(err) {
+           alert("Error processing SQL: " + err.code);
+        }
+
+        ///////////////////////////////hide group of classes from html/////////////////////////////
+        function hide(array) {
+            for(var i = 0; i < array.length; ++i) {
+                document.querySelector('.' + array[i]).style.display = 'none';
+            }
+        }
+
+        /////////////////////////////// show group of classes from html/////////////////////////////
+        function show(array) {
+            for(var i = 0; i < array.length; ++i) {
+                document.querySelector('.' + array[i]).style.display = 'block';
+            }
+        }
+
+        ///////////////////////////////insert buttons/////////////////////////////
+        function Insert(value) {
+            switch (value) {
+                //Insert(0)shows insertdb-home and hides insert-search-inicio
+                case 0:
+                    // hides insert-search-inicio
+                    html_classes = ["insert-search-inicio"];
+                    hide(html_classes)
+                    html_classes = [];
+                    // shows calendar, datainput, insertdb-home
+                    html_classes = ["form-center","data-input","insertdb-home"];
+                    show(html_classes);
+                    html_classes = [];
+                break;
+                // checks if date is empty
+                case 1:
+                    if(IsEmpty() !== true) {
+                       // check is date is already in db
+                       // if callback_execution replies back zero, there is no date in db
+                       // if callback_execution replies back one, date is already in db
+                        //searchQueryDB(string_queries[1], callback_execution,'getRowLength');
+                        searchQueryDB(string_queries[1], callback_execution,'getRowLength');
+                    }
+                break;
+            }
+        }
+
+        ///////////////////////////////search buttons/////////////////////////////
+        function Search(value) {
+            switch (value) {
+                //Search(0)shows serachdb-home and hides insert-search-inicio
+                case 0:
+                    // hides insert-search-inicio
+                    html_classes = ["insert-search-inicio"];
+                    hide(html_classes)
+                    html_classes = [];
+                    // shows calendar, searchdb-home
+                    html_classes = ["form-center","searchdb-home"];
+                    show(html_classes);
+                    html_classes = [];
+                break;
+                // checks if date is empty
+                case 1:
+                    if(IsEmpty() !== true) {
+                       // check is date is already in db
+                       // if callback_execution replies back zero, there is no date in db
+                       // if callback_execution replies back one, date is already in db
+                        //searchQueryDB(string_queries[1], callback_execution,'getRowLength');
+                        searchQueryDB(string_queries[1], callback_execution_search,'getRowLength');
+                    }
+                break;
+                case 2:
+                    if(IsEmpty() !== true) {
+                        searchQueryDB(string_queries[1], callback_execution_search_update,'getRowLength')
+                    }
+                break;
+            }
+        }
+
+        /////////////////////home buttons/////////////////////////////
+        function Home() {
+            // clean calendar
+            document.getElementById('date_from_calendar').value = "";
+            // clean textArea
+            cleanAllTextArea();
+            // makeTextAreaWriteable
+            makeTextAreaWriteable();
+
+            // hides all class except insert-search-inicio
+            //hides all (will grow as code grows)
+            html_classes = ["form-center","data-input","insertdb-home","update-home-buttons","searchdb-home","panel-modify-delete-update-home"];
+            hide(html_classes);
+            html_classes = [];
+
+            //shows insert-search-inicio
+            html_classes = ["insert-search-inicio"];
+            show(html_classes);
+            html_classes = [];
+        }
+
+        ///////////////////IsEmpty/////////////////////////////
+        function IsEmpty(){
+            //checks if calendar form is empty
+            if(document.forms["myForm"]["date"].value === "") {
+                alert("Empty dates are not valid, please pick another one");
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        ///////////////////getallidsfromtextearea/////////////////////////////
+        function getAllIDFromInputs() {
+            var tempString = '';
+            for (var i = 0; i < inputs.length; i++) {
+                if (i === (inputs.length - 1) ) {
+                    tempString += inputs[i].id + ',' + 'date' + ')';
+                } else {
+                    tempString += inputs[i].id + ',';
+                }
+            }
+            return tempString
+        }
+
+        ///////////////////search query/////////////////////////////
+        //query means the sql query sintax
+        //callback is the callback function which depends on action parameter
+        //action is a string that uses the callback function in order to perform the action
+        function searchQueryDB(query, callback, action){
+            var db = window.openDatabase("phone_gap", "0.10", "Cordova Demo", 200000);
+            query += document.forms["myForm"]["date"].value + "'" + ")";
+            db.transaction(function (tx){
+
+                tx.executeSql(query,[],
+                function (tx, results) {
+                    switch(action) {
+                        // get row length (date validation)
+                        case 'getRowLength':
+                            callback(results.rows.length);
+                        break;
+                        case 'getRowID':
+                            //get id
+                            callback(results.rows.item(0).id)
+                        break;
+                        case 'getValuesInDB':
+                            //id, all values from textarea
+                            callback(results.rows.item(0));
+                        break;
+                    }
+                });
+            },errorCB);
+        }
+
+    ///////////////////callback_execution/////////////////////////////
+    // takes actions based on what callback does (similar to a 'return')
+        function callback_execution(num) {
+            if(num){
+                alert('there are items');
+                // quita insert-db-home //will grow as code grows??
+                html_classes = ["insertdb-home"];
+                hide(html_classes);
+                html_classes = [];
+                searchQueryDB(string_queries[1], update ,'getValuesInDB');
+            } else {
+                alert('no items');
+                newEntryDB();
+            }
+        }
+
+    ///////////////////callback_execution_search/////////////////////////////
+    // takes actions based on what callback does (similar to a 'return')
+        function callback_execution_search(num) {
+            if(num){
+                alert('there are items');
+
+                // hides searchdb-home //will grow as code grows??
+                html_classes = ["searchdb-home"];
+                hide(html_classes);
+                html_classes = [];
+
+                // show textarea will grow as code grows??
+                html_classes = ["data-input", "panel-modify-delete-update-home"];
+                show(html_classes);
+                html_classes = [];
+
+                ////searchQueryDB(string_queries[1], update ,'getValuesInDB');
+                searchQueryDB(string_queries[1], showDataAsReadOnly,'getValuesInDB');
+            } else {
+                alert('The Date selected is not saved on db. Please pick another');
+                //newEntryDB();
+            }
+        }
+
+    //////////////////update/////////////////////////////
+        function update(data_from_db) {
+            //gets row ID
+            ID = '';
+            ID = data_from_db.id;
+
+            // retrieve textarea with values from db on all of them
+            for(var i = 0; i < inputs.length; ++i) {
+                inputs[i].value = data_from_db[inputs[i].id];
+            }
+
+            //shows update-home-buttons //will grow as code grows??
+            html_classes = ["update-home-buttons"];
+            show(html_classes);
+            html_classes = [];
+        }
+
+        ///////////////////newEntryDB/////////////////////////////
+        // insert new entry on db
+        function newEntryDB() {
+            var db = window.openDatabase("phone_gap", "0.10", "Cordova Demo", 200000);
+            db.transaction(insertDB, errorCB);
+        }
+
+        function insertDB(tx) {
+            buildString = '';
+            buildString += 'INSERT INTO DEMO ' + '(';
+            buildString += getAllIDFromInputs();        
+            buildString += ' VALUES ("';
+            for (var i = 0; i < inputs.length; i++) {
+                if(i === (inputs.length - 1) ) {
+                    buildString += inputs[i].value + '","' + document.forms["myForm"]["date"].value + '")';
+                    //clean values
+                    inputs[i].value = "";
+                } else {
+                    buildString += inputs[i].value + '","';
+                    //clean values
+                    inputs[i].value = "";
+                }
+            }
+            tx.executeSql(buildString);
+            //cleans date from calendar
+            document.getElementById('date_from_calendar').value = "";
+            alert("Data saved successfully");
+        }
+
+        ///////////////////getRowID/////////////////////////////
+        //get ID of data already saved on db
+        function getRowID(num) {
+            alert(num);
+        }
+
+        ///////////////////updateEntryDB/////////////////////////////
+        //update values from id
+        function updateEntryDB() {
+            var db = window.openDatabase("phone_gap", "0.10", "Cordova Demo", 200000);
+            db.transaction(updateDB, errorCB);
+        }
+
+        ///////////////////updateEntryDB/////////////////////////////
+        //update query
+        function updateDB(tx) {
+            buildString = '';
+            updateQuery();
+            tx.executeSql(buildString);
+            alert("Updated successfully");
+
+            ////////// clean all fields
+            // clean calendar
+            document.getElementById('date_from_calendar').value = "";
+            // clean textArea
+            cleanAllTextArea();
+
+            //hide update-home-buttons // will grow ??
+            html_classes = ["update-home-buttons"];
+            hide(html_classes);
+            html_classes = [];
+
+            //shows insertdb-home buttons
+            html_classes = ["insertdb-home"];
+            show(html_classes);
+            html_classes = [];
+        }
+
+        //////////////////////////////updateQuery////////////////////////////////
+        function updateQuery() {
+            buildString = 'UPDATE DEMO SET ';
+            for (var i = 0; i < inputs.length; i++) {
+                if (i === (inputs.length - 1) ) {
+                    buildString += inputs[i].id + '=' + '"' + inputs[i].value + '"' + ' ';
+                } else {
+                    buildString += inputs[i].id + '=' + '"' + inputs[i].value + '"' +  ',' + ' ';
+                }
+            }
+            buildString += 'WHERE ID=' + ID;
+        }
+
+        /////////////////clean all textarea/////////////////////////////
+        function cleanAllTextArea () {
+            for(var i=0; i < inputs.length; i++) {
+                //clean values
+                inputs[i].value = "";
+            }
+        }
+
+        ///////////////////shows all data in textarea as readonly/////////////////////////////
+        function showDataAsReadOnly (textarea) {
+            for(var i=0; i < inputs.length; i++) {
+                inputs[i].value = textarea[inputs[i].id];
+                inputs[i].setAttribute("readonly", true);
+            }
+        }
+
+        ///////////////////shows all data in textarea/////////////////////////////
+        function showDataAsRead (textarea) {
+            for(var i=0; i < inputs.length; i++) {
+                inputs[i].value = textarea[inputs[i].id];
+            }
+        }
+
+        ///////////////////modify/////////////////////////////
+        function modify() {
+            if(IsEmpty() !== true) {
+                searchQueryDB(string_queries[1], callback_execution_modify ,'getRowLength');
+            }
+        }
+
+        ///////////////////callback_execution_modify/////////////////////////////
+        function callback_execution_modify(num) {
+            if(num){
+                //alert('there are items');
+                makeTextAreaWriteable()
+                alert("Text fields are now ready to be written");
+            } else {
+                alert('no items');
+            }
+        }
+
+        ///////////////////showDataAsReadOnlyFalseonDelete/////////////////////////////
+        function makeTextAreaWriteable() {
+            for(var i=0; i < inputs.length; i++) {
+                inputs[i].removeAttribute("readonly");
+            }
+        }
+
+        ///////////////////delete/////////////////////////////
+        function Delete() {
+            if(IsEmpty() !== true) {
+                searchQueryDB(string_queries[1], callback_execution_delete ,'getRowLength');
+            }
+        }
+
+    ///////////////////callback_execution_delete/////////////////////////////
+    // takes actions based on what callback does (similar to a 'return')
+        function callback_execution_delete(num) {
+            if(num){
+                alert('there are items');
+                // get id
+                searchQueryDB(string_queries[1], deleteQuery ,'getRowID');
+            } else {
+                alert('no items');
+            }
+        }
+
+        ///////////////////deleteQuery/////////////////////////////
+        function deleteQuery(id) {
+            ID = '';
+            ID = id;
+            var db = window.openDatabase("phone_gap", "0.10", "Cordova Demo", 200000);
+            db.transaction(deleterow, errorCB);
+        }
+
+        ///////////////////deleterow/////////////////////////////
+        function deleterow(tx) {
+            tx.executeSql('DELETE FROM DEMO WHERE id = ' + ID);
+
+            // cleans calendar
+            document.forms["myForm"]["date"].value = "";
+            // clean all text area
+            cleanAllTextArea();
+            // make all textareas writeable
+            makeTextAreaWriteable();
+            alert("Item deleted successfully");
+            Home();
+        }
+
+        ///////////////////callback_from_search/////////////////////////////
+        function callback_execution_search_update(num) {
+            if(num){
+                alert('there are items');
+                searchQueryDB(string_queries[1], update_from_search ,'getValuesInDB');
+            } else {
+                alert('no items');
+            }
+        }
+
+        /////////////////update_from_search/////////////////////
+        function update_from_search(data_from_db) {
+            //get id
+            ID = '';
+            ID = data_from_db.id;
+            var db = window.openDatabase("phone_gap", "0.10", "Cordova Demo", 200000);
+            db.transaction(function (tx){
+                buildString = '';
+                updateQuery();
+                tx.executeSql(buildString)
+                alert("Updated successfully");
+                Home();
+            });
+        }
+
+        /////////////////Calendar//////////////////////////////////////////////////////////
+
+        // Project: Dynamic Date Selector (DtTvB) - 2006-03-16
+        // Script featured on JavaScript Kit- http://www.javascriptkit.com
+        // Code begin...
+        // Set the initial date.
+        var ds_i_date = new Date();
+        ds_c_month = ds_i_date.getMonth() + 1;
+        ds_c_year = ds_i_date.getFullYear();
+
+        // Get Element By Id
+        function ds_getel(id) {
+            return document.getElementById(id);
+        }
+
+        // Get the left and the top of the element.
+        function ds_getleft(el) {
+            var tmp = el.offsetLeft;
+            el = el.offsetParent
+            while(el) {
+                tmp += el.offsetLeft;
+                el = el.offsetParent;
+            }
+            return tmp;
+        }
+        function ds_gettop(el) {
+            var tmp = el.offsetTop;
+            el = el.offsetParent
+            while(el) {
+                tmp += el.offsetTop;
+                el = el.offsetParent;
+            }
+            return tmp;
+        }
+
+        // Output Element
+        var ds_oe = ds_getel('ds_calclass');
+        // Container
+        var ds_ce = ds_getel('ds_conclass');
+
+        // Output Buffering
+        var ds_ob = ''; 
+        function ds_ob_clean() {
+            ds_ob = '';
+        }
+        function ds_ob_flush() {
+            ds_oe.innerHTML = ds_ob;
+            ds_ob_clean();
+        }
+        function ds_echo(t) {
+            ds_ob += t;
+        }
+
+        var ds_element; // Text Element...
+
+        var ds_monthnames = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+        ]; // You can translate it for your language.
+
+        var ds_daynames = [
+        'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'
+        ]; // You can translate it for your language.
+
+        // Calendar template
+        function ds_template_main_above(t) {
+            return '<table cellpadding="3" cellspacing="1" class="ds_tbl">'
+                 + '<tr>'
+                 + '<td class="ds_head" style="cursor: pointer" onclick="ds_py();"><<</td>'
+                 + '<td class="ds_head" style="cursor: pointer" onclick="ds_pm();"><</td>'
+                 + '<td class="ds_head" style="cursor: pointer" onclick="ds_hi();" colspan="3">[Close]</td>'
+                 + '<td class="ds_head" style="cursor: pointer" onclick="ds_nm();">></td>'
+                 + '<td class="ds_head" style="cursor: pointer" onclick="ds_ny();">>></td>'
+                 + '</tr>'
+                 + '<tr>'
+                 + '<td colspan="7" class="ds_head">' + t + '</td>'
+                 + '</tr>'
+                 + '<tr>';
+        }
+
+        function ds_template_day_row(t) {
+            return '<td class="ds_subhead">' + t + '</td>';
+            // Define width in CSS, XHTML 1.0 Strict doesn't have width property for it.
+        }
+
+        function ds_template_new_week() {
+            return '</tr><tr>';
+        }
+
+        function ds_template_blank_cell(colspan) {
+            return '<td colspan="' + colspan + '"></td>'
+        }
+
+        function ds_template_day(d, m, y) {
+            return '<td class="ds_cell" onclick="ds_onclick(' + d + ',' + m + ',' + y + ')">' + d + '</td>';
+            // Define width the day row.
+        }
+
+        function ds_template_main_below() {
+            return '</tr>'
+                 + '</table>';
+        }
+
+        // This one draws calendar...
+        function ds_draw_calendar(m, y) {
+            // First clean the output buffer.
+            ds_ob_clean();
+            // Here we go, do the header
+            ds_echo (ds_template_main_above(ds_monthnames[m - 1] + ' ' + y));
+            for (i = 0; i < 7; i ++) {
+                ds_echo (ds_template_day_row(ds_daynames[i]));
+            }
+            // Make a date object.
+            var ds_dc_date = new Date();
+            ds_dc_date.setMonth(m - 1);
+            ds_dc_date.setFullYear(y);
+            ds_dc_date.setDate(1);
+            if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
+                days = 31;
+            } else if (m == 4 || m == 6 || m == 9 || m == 11) {
+                days = 30;
+            } else {
+                days = (y % 4 == 0) ? 29 : 28;
+            }
+            var first_day = ds_dc_date.getDay();
+            var first_loop = 1;
+            // Start the first week
+            ds_echo (ds_template_new_week());
+            // If sunday is not the first day of the month, make a blank cell...
+            if (first_day != 0) {
+                ds_echo (ds_template_blank_cell(first_day));
+            }
+            var j = first_day;
+            for (i = 0; i < days; i ++) {
+                // Today is sunday, make a new week.
+                // If this sunday is the first day of the month,
+                // we've made a new row for you already.
+                if (j == 0 && !first_loop) {
+                    // New week!!
+                    ds_echo (ds_template_new_week());
+                }
+                // Make a row of that day!
+                ds_echo (ds_template_day(i + 1, m, y));
+                // This is not first loop anymore...
+                first_loop = 0;
+                // What is the next day?
+                j ++;
+                j %= 7;
+            }
+            // Do the footer
+            ds_echo (ds_template_main_below());
+            // And let's display..
+            ds_ob_flush();
+            // Scroll it into view.
+            ds_ce.scrollIntoView();
+        }
+
+        // A function to show the calendar.
+        // When user click on the date, it will set the content of t.
+        function ds_sh(t) {
+            // Set the element to set...
+            ds_element = t;
+            // Make a new date, and set the current month and year.
+            var ds_sh_date = new Date();
+            ds_c_month = ds_sh_date.getMonth() + 1;
+            ds_c_year = ds_sh_date.getFullYear();
+            // Draw the calendar
+            ds_draw_calendar(ds_c_month, ds_c_year);
+            // To change the position properly, we must show it first.
+            ds_ce.style.display = '';
+            // Move the calendar container!
+            the_left = ds_getleft(t);
+            the_top = ds_gettop(t) + t.offsetHeight;
+            ds_ce.style.left = the_left + 'px';
+            ds_ce.style.top = the_top + 'px';
+            // Scroll it into view.
+            ds_ce.scrollIntoView();
+        }
+
+        // Hide the calendar.
+        function ds_hi() {
+            ds_ce.style.display = 'none';
+        }
+
+        // Moves to the next month...
+        function ds_nm() {
+            // Increase the current month.
+            ds_c_month ++;
+            // We have passed December, let's go to the next year.
+            // Increase the current year, and set the current month to January.
+            if (ds_c_month > 12) {
+                ds_c_month = 1; 
+                ds_c_year++;
+            }
+            // Redraw the calendar.
+            ds_draw_calendar(ds_c_month, ds_c_year);
+        }
+
+        // Moves to the previous month...
+        function ds_pm() {
+            ds_c_month = ds_c_month - 1; // Can't use dash-dash here, it will make the page invalid.
+            // We have passed January, let's go back to the previous year.
+            // Decrease the current year, and set the current month to December.
+            if (ds_c_month < 1) {
+                ds_c_month = 12; 
+                ds_c_year = ds_c_year - 1; // Can't use dash-dash here, it will make the page invalid.
+            }
+            // Redraw the calendar.
+            ds_draw_calendar(ds_c_month, ds_c_year);
+        }
+
+        // Moves to the next year...
+        function ds_ny() {
+            // Increase the current year.
+            ds_c_year++;
+            // Redraw the calendar.
+            ds_draw_calendar(ds_c_month, ds_c_year);
+        }
+
+        // Moves to the previous year...
+        function ds_py() {
+            // Decrease the current year.
+            ds_c_year = ds_c_year - 1; // Can't use dash-dash here, it will make the page invalid.
+            // Redraw the calendar.
+            ds_draw_calendar(ds_c_month, ds_c_year);
+        }
+
+        // Format the date to output.
+        function ds_format_date(d, m, y) {
+            // 2 digits month.
+            m2 = '00' + m;
+            m2 = m2.substr(m2.length - 2);
+            // 2 digits day.
+            d2 = '00' + d;
+            d2 = d2.substr(d2.length - 2);
+            // YYYY-MM-DD
+            //return y + '-' + m2 + '-' + d2;
+            // DD-MM-YYYYY
+            //return d2 + '-' + m2 + '-' + y;
+            return d2 + '-' + m2 + '-' + y;
+        }
+
+        // When the user clicks the day.
+        function ds_onclick(d, m, y) {
+            // Hide the calendar.
+            ds_hi();
+            // Set the value of it, if we can.
+            if (typeof(ds_element.value) != 'undefined') {
+                ds_element.value = ds_format_date(d, m, y);
+            // Maybe we want to set the HTML in it.
+            } else if (typeof(ds_element.innerHTML) != 'undefined') {
+                ds_element.innerHTML = ds_format_date(d, m, y);
+            // I don't know how should we display it, just alert it to user.
+            } else {
+                alert (ds_format_date(d, m, y));
+            }
+        }
+    </script>
+  </body>
+
+</html>
